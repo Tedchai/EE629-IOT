@@ -25,3 +25,15 @@ $ cp ~/iot/lesson7/rpi_spreadsheet.py .
 * Share the spreadsheet with the "client_email" address in the .json file, select “Can edit,” and click "Send"
   * Will receive an email with the subject "Delivery Status Notification (Failure)" and the message "Address not found" from mailer-daemon@google.com
 * Delete Rows 2 to 1000, and enter Date / Time, CPU Usage %, Temperature C to header cells
+
+### Edit cpu_spreadsheet.py
+
+```sh
+$ nano cpu_spreadsheet.py
+```
+> GDOCS_OAUTH_JSON = 'rpidata-xxxxxxxxxxxx.json'
+> GDOCS_SPREADSHEET_NAME = 'rpidata'
+### Run rpi_spreadsheet.py
+```sh
+$ python3 cpu_spreadsheet.py
+```
