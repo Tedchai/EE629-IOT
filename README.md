@@ -17,6 +17,7 @@ $ sudo pip3 install -U gspread oauth2client
 $ cd demo
 $ cp ~/iot/lesson3/system_info.py .
 $ cp ~/iot/lesson7/rpi_spreadsheet.py .
+```
 
 ### Go to [Google Sheets](https://docs.google.com/spreadsheets/u/0)
 
