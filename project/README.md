@@ -1,1 +1,1 @@
-# Be sure to add the JSON key file
+# Be sure to add the cpudata.json key file
