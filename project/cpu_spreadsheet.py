@@ -33,14 +33,17 @@ while True:
     cpu = psutil.cpu_percent()
     memory = psutil.virtual_memory()
     mem = memory.available/(1024**3)
+    count = psutil.cpu_count()
+    
 #    tmp = get_temperature()
     print(dat)
     print('CPU Usage:        {0:0.1f}%'.format(cpu))
     print('Memory Available: {0:0.1f} GB'.format(mem))
+    print(count)
 #    print('Temperature: {0:0.1f} C'.format(tmp))
     try:
         worksheet.append_row((str(dat), cpu, mem))
-#        worksheet.append_row((dat, cpu, tmp))
+#        worksheet.append_row((dat, cpu, tmp, count))
 # gspread==0.6.2
 # https://github.com/burnash/gspread/issues/511  
     except:
