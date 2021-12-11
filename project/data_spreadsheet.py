@@ -5,16 +5,18 @@ import datetime
 import gspread
 import psutil
 import subprocess
-#from system_info import get_temperature
+
 from oauth2client.service_account import ServiceAccountCredentials
-GDOCS_OAUTH_JSON       = 'cpudata-78c9ddc7b37e.json'
+
+GDOCS_OAUTH_JSON = 'cpudata-78c9ddc7b37e.json'
 GDOCS_SPREADSHEET_NAME = 'rpidata'
-FREQUENCY_SECONDS      = 5
+FREQUENCY_SECONDS = 15
+
 def login_open_sheet(oauth_key_file, spreadsheet):
     try:
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file, 
-                      scopes = ['https://spreadsheets.google.com/feeds',
-                                'https://www.googleapis.com/auth/drive'])
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(oauth_key_file,
+                                                                       scopes=['https://spreadsheets.google.com/feeds',
+                                                                               'https://www.googleapis.com/auth/drive'])
         gc = gspread.authorize(credentials)
         worksheet = gc.open(spreadsheet).sheet1
         return worksheet
@@ -23,29 +25,41 @@ def login_open_sheet(oauth_key_file, spreadsheet):
         print('make sure spreadsheet is shared to the client_email address in the OAuth .json file!')
         print('Google sheet login failed with error:', ex)
         sys.exit(1)
+
+
 print('Logging sensor measurements to {0} every {1} seconds.'.format(GDOCS_SPREADSHEET_NAME, FREQUENCY_SECONDS))
 print('Press Ctrl-C to quit.')
 worksheet = None
 while True:
     if worksheet is None:
         worksheet = login_open_sheet(GDOCS_OAUTH_JSON, GDOCS_SPREADSHEET_NAME)
-    dat = datetime.datetime.now()
+    dat = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     cpu = psutil.cpu_percent()
     memory = psutil.virtual_memory()
-    mem = memory.available/(1024**3)
+
+    mem = memory.available / (1024 ** 3)
+    free = str(round(memory.free / (1024 ** 3), 4))
+
     count = psutil.cpu_count()
-    
-#    tmp = get_temperature()
+    load = psutil.getloadavg()
+    stats = psutil.cpu_stats().interrupts
+
+
+
     print(dat)
     print('CPU Usage:        {0:0.1f}%'.format(cpu))
-    print('Memory Available: {0:0.1f} GB'.format(mem))
-    print(count)
-#    print('Temperature: {0:0.1f} C'.format(tmp))
+    print('Memory Available: {0:0.1f} GB' + mem)
+    print('Free Memory: ' + free)
+    print('CPU Count: ' + str(count))
+    print('System Load: ' + str(load))
+    print('CPU Status: ' + str(stats))
+
+
     try:
-        worksheet.append_row((str(dat), cpu, mem))
-#        worksheet.append_row((dat, cpu, tmp, count))
-# gspread==0.6.2
-# https://github.com/burnash/gspread/issues/511  
+        worksheet.append_row((str(dat), cpu, mem, free, count, str(load), str(stats)))
+    #   worksheet.append_row((dat, cpu, tmp))
+    # gspread==0.6.2
+    # https://github.com/burnash/gspread/issues/511
     except:
         print('Append error, logging in again')
         worksheet = None
