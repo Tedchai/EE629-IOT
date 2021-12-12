@@ -9,7 +9,7 @@
 $ pip install psutil
 ```
 
-###Functions
+### Functions
 
 * psutil.cpu_percent
     * Return a float representing the current system-wide CPU utilization as a percentage.
