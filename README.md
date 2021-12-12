@@ -14,8 +14,6 @@
 ### Install gspread and oauth2client
 ```sh
 $ sudo pip3 install -U gspread oauth2client
-$ cd demo
-$ cp ~/iot/lesson7/rpi_spreadsheet.py .
 ```
 
 ### Go to [Google Sheets](https://docs.google.com/spreadsheets/u/0)
@@ -28,11 +26,11 @@ $ cp ~/iot/lesson7/rpi_spreadsheet.py .
 ### Edit cpu_spreadsheet.py
 
 ```sh
-$ nano cpu_spreadsheet.py
+$ nano data_spreadsheet.py
 ```
 > GDOCS_OAUTH_JSON = 'rpidata-xxxxxxxxxxxx.json'
 > GDOCS_SPREADSHEET_NAME = 'rpidata'
 ### Run rpi_spreadsheet.py
 ```sh
-$ python3 cpu_spreadsheet.py
+$ python3 data_spreadsheet.py
 ```
