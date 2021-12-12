@@ -11,8 +11,7 @@ $ pip install psutil
 
 ###Functions
 
-* CPU
-> psutil.cpu_percent
+* psutil.cpu_percent
   * Return a float representing the current system-wide CPU utilization as a percentage.
 * Memory
 * Disk
