@@ -22,4 +22,6 @@ $ pip install psutil
 * psutil.getloadavg()
     * Return the average system load over the last 1, 5 and 15 minutes as a tuple.
 * psutil.cpu_status().interrupts
-    *  Time spent for servicing hardware interrupts
+    * Time spent for servicing hardware interrupts
+* psutil.disk_usage('/').free
+    * Return disk usage statistics about the partition which contains the given path as a named tuple
