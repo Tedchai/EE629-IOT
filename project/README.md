@@ -18,6 +18,8 @@ $ pip install psutil
 * psutil.virtual_memory().free
     * The memory not being used at all (zeroed) that is readily available;
 * psutil.cpu_count()
-    *  Return the number of logical CPUs in the system
+    * Return the number of logical CPUs in the system
 * psutil.getloadavg()
-    *  Return the average system load over the last 1, 5 and 15 minutes as a tuple.
+    * Return the average system load over the last 1, 5 and 15 minutes as a tuple.
+* psutil.cpu_status().interrupts
+    *  Time spent for servicing hardware interrupts
