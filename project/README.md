@@ -13,7 +13,11 @@ $ pip install psutil
 
 * psutil.cpu_percent
     * Return a float representing the current system-wide CPU utilization as a percentage.
-* Memory
-* Disk
-* Network
-* Sensors
+* psutil.virtual_memory().avaliable
+    * The memory that can be given instantly to processes without the system going into swap.
+* psutil.virtual_memory().free
+    * The memory not being used at all (zeroed) that is readily available;
+* psutil.cpu_count()
+    *  Return the number of logical CPUs in the system
+* psutil.getloadavg()
+    *  Return the average system load over the last 1, 5 and 15 minutes as a tuple.
