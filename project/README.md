@@ -11,8 +11,8 @@ $ pip install psutil
 
 ###Functions
 
-*CPU
-*Memory
-*Disk
-*Network
-*Sensors
+* CPU
+* Memory
+* Disk
+* Network
+* Sensors
