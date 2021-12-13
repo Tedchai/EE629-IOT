@@ -31,3 +31,4 @@ $ pip install psutil
 ### Screenshots
 
 ![Ubuntu Screenshot](Ubuntu.png)
+![Google Sheet](googlesheet.png)
