@@ -25,3 +25,5 @@ $ pip install psutil
     * Time spent for servicing hardware interrupts
 * psutil.disk_usage('/').free
     * Return disk usage statistics about the partition which contains the given path as a named tuple
+* psutil.net_if_address()["eth0"][0]
+    * Return the addresses associated to each NIC (network interface card) installed on the system. Under dict "eth0" the ‘0’ gives the first value "address" 
