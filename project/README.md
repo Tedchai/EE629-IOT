@@ -28,4 +28,4 @@ $ pip install psutil
 * psutil.net_if_address()["eth0"][0]
     * Return the addresses associated to each NIC (network interface card) installed on the system. Under dict "eth0" the ‘0’ gives the first value "address" 
 
-![Screenshot][Ubuntu.png]
+![Ubuntu Screenshot][project/Ubuntu.png]
